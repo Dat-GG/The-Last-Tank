@@ -2,19 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using LTAUnityBase.Base.DesignPattern;
 
 public class HPController : MonoBehaviour
 {
     public Slider HP;
     SpriteRenderer spriterender;
     public int HPPlayer;
-    public static HPController instance;
+    //public static HPController instance;
 
-    private void Awake()
-    {
-        if (instance == null) instance = this;
-    }
-    // Start is called before the first frame update
+    //private void Awake()
+    //{
+    //    if (instance == null) instance = this;
+    //}
     void Start()
     {
         HP.maxValue = HPPlayer;
@@ -29,5 +29,8 @@ public class HPController : MonoBehaviour
     {
         HPPlayer -= dame;
     }
+}
+public class HP : SingletonMonoBehaviour<HPController>
+{
 
 }

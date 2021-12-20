@@ -3,16 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using LTAUnityBase.Base.DesignPattern;
 
-public class PlayerController : TankController
+public class PlayerController : TankController, IFireSkill
 {
     public int i;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+    public BulletController prefabBullet;
+    public GameObject prefFire;
     void Update()
     {
         float horizontal = Input.GetAxis("Horizontal");
@@ -27,7 +22,8 @@ public class PlayerController : TankController
 
         if (Input.GetMouseButton(0))
         {
-            Shoot();
+            //Shoot();
+            createBullet(shootpos);
         }
     }
     public void MoveUp()
@@ -49,6 +45,37 @@ public class PlayerController : TankController
     {
         var direction = new Vector3(i, 0, 0);
         Move(direction);
+    }
+    public BulletController createBullet(Transform shootpos)
+    {
+        BulletController bullet = PoolingObject.createPooling<BulletController>(prefabBullet);
+        if (bullet == null)
+        {
+            return Instantiate(prefabBullet, shootpos.position, shootpos.rotation);
+        }
+        bullet.time = 0;
+        bullet.transform.position = shootpos.position;
+        bullet.transform.rotation = shootpos.rotation;
+        return bullet;
+    }
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "BulletEnemy")
+        {
+            HP.Instance.TruMau(1);
+            Fire(1, prefFire);
+            Destroy(collision.gameObject);
+        }
+        //if (collision.gameObject.tag == "BulletPlayer")
+        //{
+        //    Observer.Instance.Notify(TOPICNAME.ENEMYDESTROY);
+        //    Instantiate(smoke, this.gameObject.transform.position, this.gameObject.transform.rotation);
+        //    Destroy(gameObject);
+        //}
+    }
+    public void Fire(int dameff, GameObject Fire)
+    {
+        Instantiate(Fire, this.gameObject.transform.position, this.gameObject.transform.rotation);
     }
 }
 public class Player : SingletonMonoBehaviour<PlayerController>

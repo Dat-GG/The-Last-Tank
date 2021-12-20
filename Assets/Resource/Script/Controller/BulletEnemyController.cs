@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using LTAUnityBase.Base.DesignPattern;
 
-public class BulletController : MoveController, IFireSkill
+public class BulletEnemyController : MoveController, IFireSkill
 {
     public int time;
     public int dame;
     public GameObject smoke;
     public GameObject prefFire;
+    
     void Update()
     {
         Move(transform.up);
@@ -21,7 +22,7 @@ public class BulletController : MoveController, IFireSkill
         {
             Instantiate(smoke, this.gameObject.transform.position, this.gameObject.transform.rotation);
             Fire(1, prefFire);
-            PoolingObject.DestroyPooling<BulletController>(this);
+            PoolingObject.DestroyPooling<BulletEnemyController>(this);
             return;
         }
     }

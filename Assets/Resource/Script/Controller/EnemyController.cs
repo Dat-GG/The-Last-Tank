@@ -6,6 +6,7 @@ using LTAUnityBase.Base.DesignPattern;
 public class EnemyController : TankController
 {
     public GameObject player;
+    public BulletEnemyController prefabBullet;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +22,33 @@ public class EnemyController : TankController
         RotateGun(playerdic);
         if (Random.Range(0, 100) % 30 == 0)
         {
-            Shoot();
+            //Shoot();
+            createBullet(shootpos);
+        }
+    }
+    public BulletEnemyController createBullet(Transform shootpos)
+    {
+        BulletEnemyController bullet = PoolingObject.createPooling<BulletEnemyController>(prefabBullet);
+        if (bullet == null)
+        {
+            return Instantiate(prefabBullet, shootpos.position, shootpos.rotation);
+        }
+        bullet.time = 0;
+        bullet.transform.position = shootpos.position;
+        bullet.transform.rotation = shootpos.rotation;
+        return bullet;
+    }
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        //if (collision.gameObject.tag == "BulletEnemy")
+        //{
+        //    HP.Instance.TruMau(1);
+        //}
+        if (collision.gameObject.tag == "BulletPlayer")
+        {
+            Observer.Instance.Notify(TOPICNAME.ENEMYDESTROY);
+            Instantiate(smoke, this.gameObject.transform.position, this.gameObject.transform.rotation);
+            Destroy(gameObject);
         }
     }
 }
