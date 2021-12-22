@@ -20,7 +20,7 @@ public class PlayerController : TankController, IFireSkill
             Input.mousePosition.y - Screen.height / 2);
         RotateGun(gundirection);
 
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButtonDown(0))
         {
             //Shoot();
             createBullet(shootpos);

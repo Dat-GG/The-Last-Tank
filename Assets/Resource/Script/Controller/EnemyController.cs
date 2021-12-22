@@ -20,7 +20,7 @@ public class EnemyController : TankController
 
         Move(playerdic);
         RotateGun(playerdic);
-        if (Random.Range(0, 100) % 30 == 0)
+        if (Random.Range(0, 100) % 60 == 0)
         {
             //Shoot();
             createBullet(shootpos);
@@ -49,6 +49,12 @@ public class EnemyController : TankController
             Observer.Instance.Notify(TOPICNAME.ENEMYDESTROY);
             Instantiate(smoke, this.gameObject.transform.position, this.gameObject.transform.rotation);
             Destroy(gameObject);
-        }
+            GameController.instance.scorenumber += 1;
+            if (GameController.instance.scorenumber % 20 == 0)
+            {
+                GameController.instance.Lvnumber += 1;
+            }
+            Destroy(collision.gameObject);
+        }   
     }
 }

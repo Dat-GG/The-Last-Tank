@@ -31,11 +31,11 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        score.text = "" + scorenumber.ToString();
-        Lv.text = "" + Lvnumber.ToString();
+        score.text = "Score: " + scorenumber.ToString();
+        Lv.text = "Level: " + Lvnumber.ToString();
     }
     public void NewEnemy(object data)
     {
         Instantiate(enemy, Location.transform.position, Location.transform.rotation);
-    }
+    }   
 }
