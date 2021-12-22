@@ -17,7 +17,7 @@ public class BulletController : MoveController, IFireSkill
     void BulletEx()
     {
         time += 1;
-        if (time == 50)
+        if (time == 90)
         {
             Instantiate(smoke, this.gameObject.transform.position, this.gameObject.transform.rotation);
             Fire(1, prefFire);

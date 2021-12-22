@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using LTAUnityBase.Base.DesignPattern;
 
-public class EnemyController : TankController
+public class EnemyController : TankController, IFireSkill
 {
     public GameObject player;
     public BulletEnemyController prefabBullet;
+    public GameObject prefFire;
     // Start is called before the first frame update
     void Start()
     {
@@ -48,6 +49,7 @@ public class EnemyController : TankController
         {
             Observer.Instance.Notify(TOPICNAME.ENEMYDESTROY);
             Instantiate(smoke, this.gameObject.transform.position, this.gameObject.transform.rotation);
+            Fire(1, prefFire);
             Destroy(gameObject);
             GameController.instance.scorenumber += 1;
             if (GameController.instance.scorenumber % 20 == 0)
@@ -56,5 +58,9 @@ public class EnemyController : TankController
             }
             Destroy(collision.gameObject);
         }   
+    }
+    public void Fire(int dameff, GameObject Fire)
+    {
+        Instantiate(Fire, this.gameObject.transform.position, this.gameObject.transform.rotation);
     }
 }

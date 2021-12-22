@@ -5,6 +5,7 @@ using LTAUnityBase.Base.DesignPattern;
 
 public class TankController : MoveController
 {
+    public GameObject bodytank;
     public GameObject gun;
     public Transform shootpos;
     //public BulletController prefabBullet;
@@ -25,7 +26,7 @@ public class TankController : MoveController
     {
         if (direction != Vector3.zero)
         {
-            this.transform.up = direction;
+            bodytank.transform.up = direction;
         }
         base.Move(direction);
     }

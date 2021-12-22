@@ -8,6 +8,7 @@ public class PlayerController : TankController, IFireSkill
     public int i;
     public BulletController prefabBullet;
     public GameObject prefFire;
+    //public GameObject jin;
     void Update()
     {
         float horizontal = Input.GetAxis("Horizontal");
@@ -24,6 +25,23 @@ public class PlayerController : TankController, IFireSkill
         {
             //Shoot();
             createBullet(shootpos);
+        }
+        var pos = this.transform.position;
+        if (pos.x >= 13)
+        {
+            pos.x = 13;
+        }
+        if (pos.x <= -13)
+        {
+            pos.x = -13;
+        }
+        if (pos.y >= 7)
+        {
+            pos.y = 7;
+        }
+        if (pos.y <= -7)
+        {
+            pos.y = -7;
         }
     }
     public void MoveUp()
@@ -71,6 +89,11 @@ public class PlayerController : TankController, IFireSkill
         //    Observer.Instance.Notify(TOPICNAME.ENEMYDESTROY);
         //    Instantiate(smoke, this.gameObject.transform.position, this.gameObject.transform.rotation);
         //    Destroy(gameObject);
+        //}
+
+        //if (collision.gameObject.tag == "item")
+        //{
+        //    jin.gameObject.SetActive(true);
         //}
     }
     public void Fire(int dameff, GameObject Fire)
