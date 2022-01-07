@@ -25,7 +25,7 @@ public class PlayerController : TankController
             //Shoot();
             createBullet(shootpos);
         }
-        if (GameController.instance.scorenumber % 10 == 0)
+        if (GameController.instance.scorenumber % 10 == 0 && GameController.instance.scorenumber > 0)
         {
             BonusGun.SetActive(true);
             
