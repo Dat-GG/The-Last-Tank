@@ -339,6 +339,7 @@ GameObject:
   - component: {fileID: 7874552172876226945}
   - component: {fileID: 7874552172876226958}
   - component: {fileID: 7874552172876226959}
+  - component: {fileID: 7280615832317374785}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -354,7 +355,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7874552172876226956}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15.54, y: -1.04, z: 0}
+  m_LocalPosition: {x: 15.54, y: -1.04, z: -1.28}
   m_LocalScale: {x: 0.65791285, y: 0.61230123, z: 1}
   m_Children:
   - {fileID: 7874552172254961232}
@@ -481,3 +482,18 @@ MonoBehaviour:
     type: 3}
   prefFire: {fileID: 4307919662462165586, guid: ccae79a2660c7ab4eb4f58c92f6726a4,
     type: 3}
+--- !u!114 &7280615832317374785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7874552172876226956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 617ede3671a92b3458f46636e7d7f836, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HP: {fileID: 0}
+  HPPlayer: 0
+  HPEnemy: 50

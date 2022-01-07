@@ -13,6 +13,7 @@ public class GameController : MonoBehaviour
     public GameObject enemy;
     public Text Lv;
     public int Lvnumber;
+    public GameObject Boss;
 
     private void Awake()
     {
@@ -33,6 +34,17 @@ public class GameController : MonoBehaviour
     {
         score.text = "Score: " + scorenumber.ToString();
         Lv.text = "Level: " + Lvnumber.ToString();
+        if ( Lvnumber == 1)
+        {
+            GunController.instance.BulletLevel = 1;
+        }
+        if (Lvnumber ==3)
+        {
+            GunController.instance.BulletLevel = 3;
+            Location.SetActive(false);
+            Boss.SetActive(true);
+        }
+       
     }
     public void NewEnemy(object data)
     {

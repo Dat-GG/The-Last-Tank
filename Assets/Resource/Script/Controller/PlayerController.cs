@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using LTAUnityBase.Base.DesignPattern;
 
-public class PlayerController : TankController, IFireSkill
+public class PlayerController : TankController
 {
     public int i;
     public BulletController prefabBullet;
-    public GameObject prefFire;
-    //public GameObject jin;
+    public GameObject BonusGun;
     void Update()
     {
         float horizontal = Input.GetAxis("Horizontal");
@@ -26,22 +25,14 @@ public class PlayerController : TankController, IFireSkill
             //Shoot();
             createBullet(shootpos);
         }
-        var pos = this.transform.position;
-        if (pos.x >= 13)
+        if (GameController.instance.scorenumber % 10 == 0)
         {
-            pos.x = 13;
-        }
-        if (pos.x <= -13)
-        {
-            pos.x = -13;
-        }
-        if (pos.y >= 7)
-        {
-            pos.y = 7;
-        }
-        if (pos.y <= -7)
-        {
-            pos.y = -7;
+            BonusGun.SetActive(true);
+            
+            LeanTween.delayedCall(6f, () =>
+            {
+                BonusGun.SetActive(false);
+            });
         }
     }
     public void MoveUp()
@@ -81,7 +72,6 @@ public class PlayerController : TankController, IFireSkill
         if (collision.gameObject.tag == "BulletEnemy")
         {
             HP.Instance.TruMau(1);
-            Fire(1, prefFire);
             Destroy(collision.gameObject);
         }
         //if (collision.gameObject.tag == "BulletPlayer")
@@ -95,11 +85,7 @@ public class PlayerController : TankController, IFireSkill
         //{
         //    jin.gameObject.SetActive(true);
         //}
-    }
-    public void Fire(int dameff, GameObject Fire)
-    {
-        Instantiate(Fire, this.gameObject.transform.position, this.gameObject.transform.rotation);
-    }
+    }   
 }
 public class Player : SingletonMonoBehaviour<PlayerController>
 {

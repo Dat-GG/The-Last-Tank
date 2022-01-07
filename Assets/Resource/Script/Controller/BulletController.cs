@@ -3,31 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 using LTAUnityBase.Base.DesignPattern;
 
-public class BulletController : MoveController, IFireSkill
-{
+public class BulletController : MoveController
+{ 
     public int time;
     public int dame;
     public GameObject smoke;
-    public GameObject prefFire;
     void Update()
     {
         Move(transform.up);
         BulletEx();
     }
-    void BulletEx()
+    public void BulletEx()
     {
         time += 1;
-        if (time == 90)
+        if (time == 15)
         {
             Instantiate(smoke, this.gameObject.transform.position, this.gameObject.transform.rotation);
-            Fire(1, prefFire);
             PoolingObject.DestroyPooling<BulletController>(this);
             return;
         }
     }
-    public void Fire(int dameff, GameObject Fire)
-    {
-        Instantiate(Fire, this.gameObject.transform.position, this.gameObject.transform.rotation);
-        dame = dameff;
-    }
+   
+}
+public class Bullet: SingletonMonoBehaviour<BulletController>
+{
+
 }

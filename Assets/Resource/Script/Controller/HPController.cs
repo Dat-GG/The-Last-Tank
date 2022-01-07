@@ -9,6 +9,7 @@ public class HPController : MonoBehaviour
     public Slider HP;
     SpriteRenderer spriterender;
     public int HPPlayer;
+    public int HPEnemy;
     //public static HPController instance;
 
     //private void Awake()
@@ -28,6 +29,10 @@ public class HPController : MonoBehaviour
     public void TruMau(int dame)
     {
         HPPlayer -= dame;
+    }
+    public void TruMauEnemy(int dame)
+    {
+        HPEnemy -= dame;
     }
 }
 public class HP : SingletonMonoBehaviour<HPController>

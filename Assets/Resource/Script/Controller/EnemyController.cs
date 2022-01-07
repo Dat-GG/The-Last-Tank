@@ -47,15 +47,20 @@ public class EnemyController : TankController, IFireSkill
         //}
         if (collision.gameObject.tag == "BulletPlayer")
         {
-            Observer.Instance.Notify(TOPICNAME.ENEMYDESTROY);
-            Instantiate(smoke, this.gameObject.transform.position, this.gameObject.transform.rotation);
-            Fire(1, prefFire);
-            Destroy(gameObject);
-            GameController.instance.scorenumber += 1;
-            if (GameController.instance.scorenumber % 20 == 0)
+            HP.Instance.TruMauEnemy(50);
+            if (HP.Instance.HPEnemy == 0)
             {
-                GameController.instance.Lvnumber += 1;
+                Observer.Instance.Notify(TOPICNAME.ENEMYDESTROY);
+                Instantiate(smoke, this.gameObject.transform.position, this.gameObject.transform.rotation);
+                Fire(1, prefFire);
+                Destroy(gameObject);
+                GameController.instance.scorenumber += 1;
+                if (GameController.instance.scorenumber % 20 == 0)
+                {
+                    GameController.instance.Lvnumber += 1;
+                }
             }
+           
             Destroy(collision.gameObject);
         }   
     }

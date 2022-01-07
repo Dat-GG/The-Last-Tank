@@ -145,7 +145,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   time: 0
-  dame: 0
+  dame: 50
   smoke: {fileID: 1385675078904414592, guid: dfbe03bed571d62469b91ba270c124af, type: 3}
-  prefFire: {fileID: 4307919662462165586, guid: ccae79a2660c7ab4eb4f58c92f6726a4,
-    type: 3}
