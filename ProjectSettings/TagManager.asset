@@ -7,6 +7,10 @@ TagManager:
   - BulletPlayer
   - Enemy
   - BulletEnemy
+  - Player1
+  - SpeedItem
+  - HPItem
+  - PoisonTrap
   layers:
   - Default
   - TransparentFX

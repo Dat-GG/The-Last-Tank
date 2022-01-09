@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class MoveController : MonoBehaviour
 {
-    public int speed;
+    public float speed;
     protected virtual void Move(Vector3 direction)
     {
         this.gameObject.transform.position += direction * Time.deltaTime * speed;
     }
+        
 }

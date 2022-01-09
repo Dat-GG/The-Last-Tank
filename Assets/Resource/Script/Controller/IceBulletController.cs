@@ -33,7 +33,7 @@ public class IceBulletController : BulletController, IIceSkill
     public void Ice(int dameff, GameObject Ice)
     {
         Instantiate(Ice, this.gameObject.transform.position, this.gameObject.transform.rotation);
-        dame = dameff;
+        damage = dameff;
     }
     
 }

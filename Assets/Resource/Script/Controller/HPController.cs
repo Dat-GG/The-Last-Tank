@@ -8,20 +8,12 @@ public class HPController : MonoBehaviour
 {
     public Slider HP;
     SpriteRenderer spriterender;
-    public int HPPlayer;
+    private int HPPlayer = 1000;
     public int HPEnemy;
-    //public static HPController instance;
-
-    //private void Awake()
-    //{
-    //    if (instance == null) instance = this;
-    //}
     void Start()
     {
         HP.maxValue = HPPlayer;
     }
-
-    // Update is called once per frame
     void Update()
     {
         HP.value = HPPlayer;
@@ -30,9 +22,27 @@ public class HPController : MonoBehaviour
     {
         HPPlayer -= dame;
     }
-    public void TruMauEnemy(int dame)
+    public void TruMauEnemy(int damage) // có thể sẽ xóa
     {
-        HPEnemy -= dame;
+        HPEnemy -= damage;
+    }
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "HPItem")
+        {
+            HPPlayer += 100;
+            Destroy(collision.gameObject);
+            if (HPPlayer >= 1000)
+            {
+                HPPlayer = 1000;
+            }
+        }
+
+        if(collision.gameObject.tag == "PoisonTrap")
+        {
+            HPPlayer -= 100;
+            Destroy(collision.gameObject);
+        }
     }
 }
 public class HP : SingletonMonoBehaviour<HPController>

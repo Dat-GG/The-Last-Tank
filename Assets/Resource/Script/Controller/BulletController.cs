@@ -6,7 +6,7 @@ using LTAUnityBase.Base.DesignPattern;
 public class BulletController : MoveController
 { 
     public int time;
-    public int dame;
+    public int damage;
     public GameObject smoke;
     void Update()
     {
@@ -16,7 +16,7 @@ public class BulletController : MoveController
     public void BulletEx()
     {
         time += 1;
-        if (time == 15)
+        if (time == 50)
         {
             Instantiate(smoke, this.gameObject.transform.position, this.gameObject.transform.rotation);
             PoolingObject.DestroyPooling<BulletController>(this);

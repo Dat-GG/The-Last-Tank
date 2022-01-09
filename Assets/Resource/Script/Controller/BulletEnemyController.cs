@@ -32,3 +32,7 @@ public class BulletEnemyController : MoveController, IFireSkill
         dame = dameff;
     }
 }
+public class BulletEnemy : SingletonMonoBehaviour<BulletEnemyController>
+{
+
+}

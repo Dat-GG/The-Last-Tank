@@ -71,20 +71,19 @@ public class PlayerController : TankController
     {
         if (collision.gameObject.tag == "BulletEnemy")
         {
-            HP.Instance.TruMau(1);
+            this.GetComponent<HPController>().TruMau(collision.gameObject.GetComponent<BulletEnemyController>().dame);
             Destroy(collision.gameObject);
         }
-        //if (collision.gameObject.tag == "BulletPlayer")
-        //{
-        //    Observer.Instance.Notify(TOPICNAME.ENEMYDESTROY);
-        //    Instantiate(smoke, this.gameObject.transform.position, this.gameObject.transform.rotation);
-        //    Destroy(gameObject);
-        //}
-
-        //if (collision.gameObject.tag == "item")
-        //{
-        //    jin.gameObject.SetActive(true);
-        //}
+      
+        if (collision.gameObject.tag == "SpeedItem")
+        {
+            speed += 5;
+            LeanTween.delayedCall(5f, () =>
+            {
+                speed -= 5;
+            });
+            Destroy(collision.gameObject);
+        }
     }   
 }
 public class Player : SingletonMonoBehaviour<PlayerController>

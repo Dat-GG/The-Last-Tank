@@ -18,15 +18,18 @@ public class EnemyController : TankController, IFireSkill
     void Update()
     {
         var playerdic = Player.Instance.transform.position - transform.position;
+        LeanTween.delayedCall(0.5f, () =>
+        {
+            Move(playerdic);
+        }); 
 
-        Move(playerdic);
         RotateGun(playerdic);
         if (Random.Range(0, 100) % 60 == 0)
         {
             //Shoot();
             createBullet(shootpos);
         }
-    }
+    }    
     public BulletEnemyController createBullet(Transform shootpos)
     {
         BulletEnemyController bullet = PoolingObject.createPooling<BulletEnemyController>(prefabBullet);
@@ -47,8 +50,9 @@ public class EnemyController : TankController, IFireSkill
         //}
         if (collision.gameObject.tag == "BulletPlayer")
         {
-            HP.Instance.TruMauEnemy(50);
-            if (HP.Instance.HPEnemy == 0)
+            // HP.Instance.TruMauEnemy(Bullet.Instance.damage);
+            GetComponent<HPController>().HPEnemy -= collision.gameObject.GetComponent<BulletController>().damage;
+            if (HP.Instance.HPEnemy <= 0)
             {
                 Observer.Instance.Notify(TOPICNAME.ENEMYDESTROY);
                 Instantiate(smoke, this.gameObject.transform.position, this.gameObject.transform.rotation);
