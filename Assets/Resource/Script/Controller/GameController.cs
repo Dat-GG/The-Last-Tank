@@ -32,19 +32,19 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //score.text = "Score: " + scorenumber.ToString();
-        //Lv.text = "Level: " + Lvnumber.ToString();
-        //if ( Lvnumber == 1)
-        //{
-        //    GunController.instance.BulletLevel = 1;
-        //}
-        //if (Lvnumber ==3)
-        //{
-        //    GunController.instance.BulletLevel = 3;
-        //    Location.SetActive(false);
-        //    Boss.SetActive(true);
-        //}
-       
+        score.text = "Score: " + scorenumber.ToString();
+        Lv.text = "Level: " + Lvnumber.ToString();
+        if (Lvnumber == 1)
+        {
+            GunController.instance.BulletLevel = 1;
+        }
+        if (Lvnumber == 3)
+        {
+            GunController.instance.BulletLevel = 3;
+            Location.SetActive(false);
+            Boss.SetActive(true);
+        }
+
     }
     public void NewEnemy(object data)
     {

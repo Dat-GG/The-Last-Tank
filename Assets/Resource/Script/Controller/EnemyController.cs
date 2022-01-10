@@ -24,11 +24,14 @@ public class EnemyController : TankController, IFireSkill
         }); 
 
         RotateGun(playerdic);
-        if (Random.Range(0, 100) % 60 == 0)
+        LeanTween.delayedCall(1f, () =>
         {
-            //Shoot();
-            createBullet(shootpos);
-        }
+            if (Random.Range(0, 100) % 60 == 0)
+            {
+                //Shoot();
+                createBullet(shootpos);
+            }
+        });
     }    
     public BulletEnemyController createBullet(Transform shootpos)
     {

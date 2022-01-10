@@ -20,11 +20,11 @@ public class IceBulletController : BulletController, IIceSkill
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            Ice(1, prefIce);
-            collision.gameObject.GetComponent<EnemyController>().speed = 0;
+            Ice(50, prefIce);
+            collision.gameObject.GetComponent<EnemyController>().speed = 0.1f;
             LeanTween.delayedCall(2f, () =>
             {
-                collision.gameObject.GetComponent<EnemyController>().speed = 5;
+                collision.gameObject.GetComponent<EnemyController>().speed = 0.5f;
             });
 
         }
