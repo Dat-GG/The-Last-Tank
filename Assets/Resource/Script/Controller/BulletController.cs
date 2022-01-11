@@ -23,7 +23,6 @@ public class BulletController : MoveController
             return;
         }
     }
-   
 }
 public class Bullet: SingletonMonoBehaviour<BulletController>
 {

@@ -8,13 +8,6 @@ public class EnemyController : TankController, IFireSkill
     public GameObject player;
     public BulletEnemyController prefabBullet;
     public GameObject prefFire;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
         var playerdic = Player.Instance.transform.position - transform.position;

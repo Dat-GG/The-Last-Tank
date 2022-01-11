@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IceBulletController : BulletController, IIceSkill
+public class WaterBulletController : BulletController, IWaterSkill
 {
-    public GameObject prefIce;
+    public GameObject preWater;
     void Update()
     {
         Move(transform.up);
@@ -14,8 +14,8 @@ public class IceBulletController : BulletController, IIceSkill
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            Ice(50, prefIce);
-            collision.gameObject.GetComponent<EnemyController>().speed = 0.1f;
+            Water(50, preWater);
+            collision.gameObject.GetComponent<EnemyController>().speed = 0f;
             LeanTween.delayedCall(2f, () =>
             {
                 collision.gameObject.GetComponent<EnemyController>().speed = 0.5f;
@@ -23,9 +23,9 @@ public class IceBulletController : BulletController, IIceSkill
 
         }
     }
-    public void Ice(int dameff, GameObject Ice)
+    public void Water(int dameff, GameObject Water)
     {
-        Instantiate(Ice, this.gameObject.transform.position, this.gameObject.transform.rotation);
+        Instantiate(Water, this.gameObject.transform.position, this.gameObject.transform.rotation);
         damage = dameff;
     }
 }
