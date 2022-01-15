@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class SmokeController : MonoBehaviour
 {
-    // Start is called before the first frame update
     public void SmokeEx()
     {
         Destroy(this.gameObject);

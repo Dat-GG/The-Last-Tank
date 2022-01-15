@@ -20,7 +20,7 @@ public class IceBulletController : BulletController, IIceSkill
             {
                 collision.gameObject.GetComponent<EnemyController>().speed = 0.5f;
             });
-
+            //GameController.instance.scorenumber += 1;
         }
     }
     public void Ice(int dameff, GameObject Ice)

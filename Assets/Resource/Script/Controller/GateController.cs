@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class GateController : MonoBehaviour
 {
-    //public int time = 0;
     public GameObject[] gate;
     public GameObject[] item;
 
@@ -12,11 +11,6 @@ public class GateController : MonoBehaviour
     {
         StartCoroutine(spawnItem());
     }
-    void Update()
-    {
-
-    }
-
     IEnumerator spawnItem()
     {
         while (true)

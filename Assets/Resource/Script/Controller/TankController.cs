@@ -9,19 +9,7 @@ public class TankController : MoveController
     public GameObject gun;
     public Transform shootpos;
     //public BulletController prefabBullet;
-    //public string opponent;
     public GameObject smoke;
-
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     protected override void Move(Vector3 direction)
     {
         if (direction != Vector3.zero)
@@ -53,18 +41,5 @@ public class TankController : MoveController
     //    bullet.transform.position = shootpos.position;
     //    bullet.transform.rotation = shootpos.rotation;
     //    return bullet;
-    //}
-    //void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    if (collision.gameObject.tag == "BulletEnemy")
-    //    {
-    //        HP.Instance.TruMau(1);
-    //    }
-    //    if (collision.gameObject.tag == "BulletPlayer")
-    //    {
-    //        Observer.Instance.Notify(TOPICNAME.ENEMYDESTROY);
-    //        Instantiate(smoke, this.gameObject.transform.position, this.gameObject.transform.rotation);
-    //        Destroy(gameObject);
-    //    }
     //}
 }

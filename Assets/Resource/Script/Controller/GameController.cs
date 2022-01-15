@@ -19,7 +19,6 @@ public class GameController : MonoBehaviour
     {
         if (instance == null) instance = this;
     }
-    // Start is called before the first frame update
     void Start()
     {
         Observer.Instance.AddObserver(TOPICNAME.ENEMYDESTROY, NewEnemy);
@@ -28,23 +27,33 @@ public class GameController : MonoBehaviour
     {
         Observer.Instance.RemoveObserver(TOPICNAME.ENEMYDESTROY, NewEnemy);
     }
-
-    // Update is called once per frame
     void Update()
     {
         score.text = "Score: " + scorenumber.ToString();
         Lv.text = "Level: " + Lvnumber.ToString();
+
+        if (Lvnumber == 0)
+        {
+            Gun.Instance.BulletLevel = 0;
+        }
         if (Lvnumber == 1)
         {
-            GunController.instance.BulletLevel = 1;
+            Gun.Instance.BulletLevel = 1;
+        }
+        if (Lvnumber == 2)
+        {
+            Gun.Instance.BulletLevel = 2;
         }
         if (Lvnumber == 3)
         {
-            GunController.instance.BulletLevel = 3;
+            Gun.Instance.BulletLevel = 3;
+        }
+        if (Lvnumber == 4)
+        {
+            Gun.Instance.BulletLevel = 4;
             Location.SetActive(false);
             Boss.SetActive(true);
         }
-
     }
     public void NewEnemy(object data)
     {

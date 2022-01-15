@@ -21,7 +21,6 @@ public class EnemyController : TankController, IFireSkill
         {
             if (Random.Range(0, 100) % 60 == 0)
             {
-                //Shoot();
                 createBullet(shootpos);
             }
         });
@@ -40,13 +39,8 @@ public class EnemyController : TankController, IFireSkill
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
-        //if (collision.gameObject.tag == "BulletEnemy")
-        //{
-        //    HP.Instance.TruMau(1);
-        //}
         if (collision.gameObject.tag == "BulletPlayer")
         {
-            // HP.Instance.TruMauEnemy(Bullet.Instance.damage);
             GetComponent<HPController>().HPEnemy -= collision.gameObject.GetComponent<BulletController>().damage;
             if (HP.Instance.HPEnemy <= 0)
             {
@@ -55,7 +49,7 @@ public class EnemyController : TankController, IFireSkill
                 Fire(1, prefFire);
                 Destroy(gameObject);
                 GameController.instance.scorenumber += 1;
-                if (GameController.instance.scorenumber % 20 == 0)
+                if (GameController.instance.scorenumber % 10 == 0 && GameController.instance.scorenumber > 0)
                 {
                     GameController.instance.Lvnumber += 1;
                 }

@@ -11,16 +11,12 @@ public class DestroyController : MonoBehaviour
     {
         StartCoroutine(CountDown());
     }
-
-    
     public void DestroyObject()
     {
         currentTime++;
-        // Debug.Log(currentTime);
         if(timeLimit == currentTime)
         {
             Destroy(this.gameObject);
-            // Debug.Log("boom");
         }
     }
     IEnumerator CountDown()
@@ -28,7 +24,6 @@ public class DestroyController : MonoBehaviour
         while (true)
         {
             DestroyObject();
-            // Debug.Log("alo");
             yield return new WaitForSeconds(1f);
         }
     }

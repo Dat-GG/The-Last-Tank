@@ -17,6 +17,7 @@ public class FireBulletController : BulletController, IFireBulletSkill
             FireBullet(50, preFireBullet);
             collision.gameObject.transform.position = GameController.instance.Location.transform.position;
         }
+        //GameController.instance.scorenumber += 1;
     }
     public void FireBullet(int dameff, GameObject Fire)
     {

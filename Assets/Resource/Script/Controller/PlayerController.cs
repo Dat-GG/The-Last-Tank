@@ -6,7 +6,7 @@ using LTAUnityBase.Base.DesignPattern;
 public class PlayerController : TankController
 {
     public int i;
-    public BulletController prefabBullet;
+    //public BulletController prefabBullet;
     public GameObject BonusGun;
     void Update()
     {
@@ -20,11 +20,11 @@ public class PlayerController : TankController
             Input.mousePosition.y - Screen.height / 2);
         RotateGun(gundirection);
 
-        if (Input.GetMouseButtonDown(0))
-        {
-            //Shoot();
-            createBullet(shootpos);
-        }
+        //if (Input.GetMouseButtonDown(0))
+        //{
+        //    Shoot();
+        //    //createBullet(shootpos);
+        //}
         if (GameController.instance.scorenumber % 10 == 0 && GameController.instance.scorenumber > 0)
         {
             BonusGun.SetActive(true);
@@ -55,18 +55,18 @@ public class PlayerController : TankController
         var direction = new Vector3(i, 0, 0);
         Move(direction);
     }
-    public BulletController createBullet(Transform shootpos)
-    {
-        BulletController bullet = PoolingObject.createPooling<BulletController>(prefabBullet);
-        if (bullet == null)
-        {
-            return Instantiate(prefabBullet, shootpos.position, shootpos.rotation);
-        }
-        bullet.time = 0;
-        bullet.transform.position = shootpos.position;
-        bullet.transform.rotation = shootpos.rotation;
-        return bullet;
-    }
+    //public BulletController createBullet(Transform shootpos)
+    //{
+    //    BulletController bullet = PoolingObject.createPooling<BulletController>(prefabBullet);
+    //    if (bullet == null)
+    //    {
+    //        return Instantiate(prefabBullet, shootpos.position, shootpos.rotation);
+    //    }
+    //    bullet.time = 0;
+    //    bullet.transform.position = shootpos.position;
+    //    bullet.transform.rotation = shootpos.rotation;
+    //    return bullet;
+    //}
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "BulletEnemy")

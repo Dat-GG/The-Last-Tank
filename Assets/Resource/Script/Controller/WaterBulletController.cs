@@ -20,7 +20,7 @@ public class WaterBulletController : BulletController, IWaterSkill
             {
                 collision.gameObject.GetComponent<EnemyController>().speed = 0.5f;
             });
-
+            //GameController.instance.scorenumber += 1;
         }
     }
     public void Water(int dameff, GameObject Water)

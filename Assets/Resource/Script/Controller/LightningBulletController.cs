@@ -15,6 +15,7 @@ public class LightningBulletController : BulletController, ILightningSkill
     {
         if (collision.gameObject.tag == "Enemy")
         {
+            Observer.Instance.Notify(TOPICNAME.ENEMYDESTROY);
             Lightning(50, prefLightning);
             //collision.gameObject.GetComponent<EnemyController>().speed = 0;
             //LeanTween.delayedCall(3f, () =>
@@ -22,7 +23,11 @@ public class LightningBulletController : BulletController, ILightningSkill
             //    collision.gameObject.GetComponent<EnemyController>().speed = 0.3f;
             //});
             Destroy(collision.gameObject);
-            Observer.Instance.Notify(TOPICNAME.ENEMYDESTROY);
+            GameController.instance.scorenumber += 1;
+            if (GameController.instance.scorenumber % 10 == 0 && GameController.instance.scorenumber > 0)
+            {
+                GameController.instance.Lvnumber += 1;
+            }
         }
     }
     public void Lightning(int dameff, GameObject Lightning)

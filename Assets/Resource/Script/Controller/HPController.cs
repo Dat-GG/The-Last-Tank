@@ -8,7 +8,7 @@ public class HPController : MonoBehaviour
 {
     public Slider HP;
     SpriteRenderer spriterender;
-    private int HPPlayer = 1000;
+    private int HPPlayer = 10000;
     public int HPEnemy;
     void Start()
     {

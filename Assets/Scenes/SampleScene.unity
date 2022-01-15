@@ -380,7 +380,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e1776e61b06d7fd4e8552b7e322faff9, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -388,7 +388,7 @@ SpriteRenderer:
   m_Size: {x: 0.71, y: 0.86}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &84661087
@@ -399,7 +399,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 84661082}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.158, y: 0.495, z: 0}
+  m_LocalPosition: {x: 15.43, y: -0.88, z: 0}
   m_LocalScale: {x: 1.127863, y: 0.9993187, z: 1}
   m_Children:
   - {fileID: 1180029955}
@@ -858,7 +858,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 244065881}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.015, y: 1.03, z: 0}
+  m_LocalPosition: {x: 0.015, y: 1.18, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1320335017}
@@ -1259,10 +1259,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a9cdc1414aa926479015ea4c769b231, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TranShoot: {fileID: 1797697324}
+  TranShoot: {fileID: 1797697325}
   bullet:
   - {fileID: 6240066521725443643, guid: 9fca8563cc90c5541944f87fb2a4e840, type: 3}
   - {fileID: 7184047357882307484, guid: 44daf434e01a1b845b2352aac4966bdc, type: 3}
+  - {fileID: 7301420448609242619, guid: 68fefbae78c46ac4db3094fa842a0b4e, type: 3}
+  - {fileID: 8321690288318888200, guid: f2be3505dcc16f54db4d0b47f23ab1c5, type: 3}
+  - {fileID: 7974085352292977617, guid: a02be87fe3bc8f843a187b5dbda15315, type: 3}
   BulletLevel: 0
 --- !u!212 &330511596
 SpriteRenderer:
@@ -1349,7 +1352,7 @@ MonoBehaviour:
   Location: {fileID: 1434423469}
   enemy: {fileID: 1919991622624911587, guid: 4475f3409393b10449a0279469bb5ab2, type: 3}
   Lv: {fileID: 648600378}
-  Lvnumber: 1
+  Lvnumber: 0
   Boss: {fileID: 84661082}
 --- !u!212 &346424537
 SpriteRenderer:
@@ -1955,7 +1958,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Level: 1'
+  m_Text: 'Level: 0'
 --- !u!222 &648600379
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3350,6 +3353,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1320335017}
   - component: {fileID: 1320335018}
+  - component: {fileID: 1320335019}
   m_Layer: 0
   m_Name: Gun
   m_TagString: Untagged
@@ -3422,6 +3426,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1320335019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1320335016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a9cdc1414aa926479015ea4c769b231, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TranShoot: {fileID: 244065882}
+  bullet:
+  - {fileID: 7301420448609242619, guid: 68fefbae78c46ac4db3094fa842a0b4e, type: 3}
+  - {fileID: 7184047357882307484, guid: 44daf434e01a1b845b2352aac4966bdc, type: 3}
+  - {fileID: 6240066521725443643, guid: 9fca8563cc90c5541944f87fb2a4e840, type: 3}
+  - {fileID: 8321690288318888200, guid: f2be3505dcc16f54db4d0b47f23ab1c5, type: 3}
+  - {fileID: 7974085352292977617, guid: a02be87fe3bc8f843a187b5dbda15315, type: 3}
+  BulletLevel: 0
 --- !u!1 &1337546913
 GameObject:
   m_ObjectHideFlags: 0
@@ -3655,8 +3679,6 @@ MonoBehaviour:
   shootpos: {fileID: 244065882}
   smoke: {fileID: 1385675078904414592, guid: dfbe03bed571d62469b91ba270c124af, type: 3}
   i: 3
-  prefabBullet: {fileID: 5612096011751514833, guid: 68fefbae78c46ac4db3094fa842a0b4e,
-    type: 3}
   BonusGun: {fileID: 1361041230}
 --- !u!50 &1401040300
 Rigidbody2D:
@@ -24672,7 +24694,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 30.830078, y: 184.92}
+  m_AnchoredPosition: {x: 30.830078, y: 123}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1909082595
@@ -25044,10 +25066,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a9cdc1414aa926479015ea4c769b231, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TranShoot: {fileID: 233971357}
+  TranShoot: {fileID: 233971358}
   bullet:
   - {fileID: 6240066521725443643, guid: 9fca8563cc90c5541944f87fb2a4e840, type: 3}
   - {fileID: 7184047357882307484, guid: 44daf434e01a1b845b2352aac4966bdc, type: 3}
+  - {fileID: 7301420448609242619, guid: 68fefbae78c46ac4db3094fa842a0b4e, type: 3}
+  - {fileID: 8321690288318888200, guid: f2be3505dcc16f54db4d0b47f23ab1c5, type: 3}
+  - {fileID: 7974085352292977617, guid: a02be87fe3bc8f843a187b5dbda15315, type: 3}
   BulletLevel: 0
 --- !u!212 &2075219903
 SpriteRenderer:
